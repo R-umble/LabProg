@@ -12,7 +12,7 @@ using namespace std;
 
 class Registro {
 public:
-    Registro(){}
+    Registro(const string &name): ownerName(""){}
 
     virtual ~Registro() = default;
 
@@ -31,6 +31,7 @@ public:
 
 private:
     list<Attivita> activities;
+    string ownerName;
 };
 
 
