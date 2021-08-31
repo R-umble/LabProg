@@ -12,7 +12,7 @@ using namespace std;
 
 class Attivita {
 public:
-    Attivita(string des, int in, int fin, int g) : descrizione(des), inizio(in), fine(fin), giorno(g);
+    Attivita(string des, int in, int fin, int g) : descrizione(des), inizio(in), fine(fin), giorno(g){}
 
     int getGiorno() const;
 

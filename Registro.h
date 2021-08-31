@@ -12,7 +12,7 @@ using namespace std;
 
 class Registro {
 public:
-    Registro();
+    Registro(){}
 
     virtual ~Registro() = default;
 
@@ -25,6 +25,9 @@ public:
     }
 
     list<Attivita> showActivitiesByDay(int giorno);
+
+    //funzione di aiuto per output su schermo
+    void feedback(int giorno);
 
 private:
     list<Attivita> activities;
