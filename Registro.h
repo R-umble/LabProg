@@ -7,10 +7,11 @@
 
 #include "list"
 #include "Attivita.h"
+#include "Subject.h"
 
 using namespace std;
 
-class Registro {
+class Registro : public Subject{
 public:
     Registro(const string &name): ownerName(""){}
 

@@ -7,8 +7,9 @@
 
 #include <wx/wx.h>
 #include <wx/wxprec.h>
+#include "Observer.h"
 
-class MyFrame : public wxFrame{
+class MyFrame : public wxFrame, public Observer{
 public:
     MyFrame();
 
