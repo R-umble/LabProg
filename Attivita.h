@@ -14,30 +14,24 @@ class Attivita {
 public:
     Attivita(string des, int in, int fin, int g) : descrizione(des), inizio(in), fine(fin), giorno(g){}
 
-    int getGiorno() const;
-
-    void setGiorno(int giorno);
+    const string &getDescrizione() const;
+    void setDescrizione(const string &descrizione);
 
     int getInizio() const;
-
     void setInizio(int inizio);
 
     int getFine() const;
-
     void setFine(int fine);
 
-    const string &getDescrizione() const;
-
-    void setDescrizione(const string &descrizione);
+    int getGiorno() const;
+    void setGiorno(int giorno);
 
     bool operator==(const Attivita &a);
 
-
 private:
     int giorno, inizio, fine;
+
     string descrizione;
-
 };
-
 
 #endif //LABPROG_ATTIVITA_H
