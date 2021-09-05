@@ -4,6 +4,8 @@
 
 #ifndef LABPROG_SUBJECT_H
 
+#include "Observer.h"
+
 class Subject {
 public:
     virtual ~Subject() {}

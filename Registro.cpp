@@ -4,6 +4,7 @@
 
 #include "Registro.h"
 #include "iostream"
+#include "string"
 
 using namespace std;
 
@@ -16,9 +17,30 @@ list<Attivita> Registro::showActivitiesByDay(int giorno) {
     return activitybyday;
 }
 
-void Registro::feedback(int giorno) {
+string Registro::feedBack(int giorno) {
     list<Attivita> activitybyday;
+    string lista;
     activitybyday = showActivitiesByDay(giorno);
-    for (auto itr: activities)
-        cout << itr.getDescrizione() << endl;
+    for (auto itr: activitybyday) {
+        lista += itr.getDescrizione() + "\n";
+    }
+    return lista;
+}
+
+void Registro::notify() {
+    for (Observer* observer : observers)
+        observer->update();
+}
+
+void Registro::setData(const int i) {
+    data = i;
+    notify();
+}
+
+void Registro::addObserver(Observer* o) {
+    observers.push_back(o);
+}
+
+void Registro::removeObserver(Observer* o) {
+    observers.remove(o);
 }

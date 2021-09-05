@@ -3,46 +3,79 @@
 //
 
 #include "MyFrame.h"
+#include <wx/spinctrl.h>
 
 enum {
     ID_Hello = 1
 };
 
-MyFrame::MyFrame()
-        : wxFrame(NULL, wxID_ANY, "Hello World") {
+MyFrame::MyFrame(Registro *model, Controller *controller, wxWindow *parent, wxWindowID id, const wxString &title,const wxPoint &pos, const wxSize &size, long style): wxFrame(parent, id, title, pos, size, style){
+    this->registro = model;
+    this->registro->addObserver(this);
+    this->controller = controller;
+
+    this->SetSizeHints(wxDefaultSize, wxDefaultSize);
+
     wxBoxSizer *frameSizer;
     frameSizer = new wxBoxSizer(wxHORIZONTAL);
 
-    wxMenu *menuFile = new wxMenu;
-    menuFile->Append(ID_Hello, "&Hello...\tCtrl-H",
-                     "Help string shown in status bar for this menu item");
-    menuFile->AppendSeparator();
-    menuFile->Append(wxID_EXIT);
+    staticText = new wxStaticText(this, wxID_ANY, wxT("lista attività"), wxDefaultPosition, wxDefaultSize, 0);
+    staticText->Wrap(-1);
+    frameSizer->Add(staticText, 0, wxALL, 5);
 
-    wxMenu *menuHelp = new wxMenu;
-    menuHelp->Append(wxID_ABOUT);
+    textCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+    frameSizer->Add(textCtrl, 0, wxALL, 5);
 
-    wxMenuBar *menuBar = new wxMenuBar;
-    menuBar->Append(menuFile, "&File");
-    menuBar->Append(menuHelp, "&Help");
+    textCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+    frameSizer->Add(textCtrl, 0, wxALL, 5);
 
-    SetMenuBar(menuBar);
-    CreateStatusBar();
-    SetStatusText("Welcome to wxWidgets!");
-    Bind(wxEVT_MENU, &MyFrame::OnHello, this, ID_Hello);
-    Bind(wxEVT_MENU, &MyFrame::OnAbout, this, wxID_ABOUT);
-    Bind(wxEVT_MENU, &MyFrame::OnExit, this, wxID_EXIT);
+    wxBoxSizer *buttonSizer;
+    buttonSizer = new wxBoxSizer(wxVERTICAL);
+
+    incrementButton = new wxButton(this, wxID_ANY, wxT("Increment"), wxDefaultPosition, wxDefaultSize, 0);
+    buttonSizer->Add(incrementButton, 0, wxALL, 5);
+
+    decrementButton = new wxButton(this, wxID_ANY, wxT("Decrement"), wxDefaultPosition, wxDefaultSize, 0);
+    buttonSizer->Add(decrementButton, 0, wxALL, 5);
+
+    frameSizer->Add(buttonSizer, 1, wxEXPAND, 5);
+
+    this->SetSizer(frameSizer);
+    this->Layout();
+
+    this->Centre(wxBOTH);
+
+    // Connect Events
+    incrementButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onIncrementButtonClick), NULL,
+                             this);
+    decrementButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onDecrementButtonClick), NULL,
+                             this);
+
+    update();
 }
 
-void MyFrame::OnExit(wxCommandEvent &event) {
-    Close(true);
+MyFrame::~MyFrame() noexcept {
+    // Disconnect Events
+    incrementButton->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onIncrementButtonClick),
+                                NULL,
+                                this);
+    decrementButton->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onDecrementButtonClick),
+                                NULL,
+                                this);
+    // unsubscribe from registro
+    registro->removeObserver(this);
 }
 
-void MyFrame::OnAbout(wxCommandEvent &event) {
-    wxMessageBox("This is a wxWidgets Hello World example",
-                 "About Hello World", wxOK | wxICON_INFORMATION);
+void MyFrame::onIncrementButtonClick(wxCommandEvent &event) {
+    controller->increment();
 }
 
-void MyFrame::OnHello(wxCommandEvent &event) {
-    wxLogMessage("Hello world from wxWidgets!");
+void MyFrame::onDecrementButtonClick(wxCommandEvent &event) {
+    controller->decrement();
+}
+
+void MyFrame::update() {
+    string value = registro->feedBack();
+    wxString wxIntString = wxString::Format(wxT("%i"), value);
+    textCtrl->ChangeValue(wxIntString);
 }

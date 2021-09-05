@@ -6,8 +6,10 @@
 
 bool MyApp::OnInit()
 {
-    MyFrame *frame = new MyFrame();
-    frame->Show(true);
+    Registro* registro = new Registro;
+    Controller* controller = new Controller(registro);
+    MyFrame *frame = new MyFrame(registro, controller, NULL, wxID_ANY, "MVC Example" );
+    frame->Show( true );
     return true;
 }
 #include "MyApp.h"
