@@ -8,6 +8,7 @@
 #include "list"
 #include "Attivita.h"
 #include "Subject.h"
+#include <wx/wxprec.h>
 
 using namespace std;
 
@@ -30,7 +31,7 @@ public:
     list<Attivita> showActivitiesByDay(int giorno);
 
     //Metodo di aiuto per output su schermo
-    string feedBack(int giorno);
+    wxString feedBack(int giorno);
 
     //gesione observer
     virtual void addObserver(Observer* o) override;

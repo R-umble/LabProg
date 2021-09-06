@@ -2,6 +2,7 @@
 // Created by francesco on 28/08/21.
 //
 
+#include <wx/string.h>
 #include "Registro.h"
 #include "iostream"
 #include "string"
@@ -17,14 +18,15 @@ list<Attivita> Registro::showActivitiesByDay(int giorno) {
     return activitybyday;
 }
 
-string Registro::feedBack(int giorno) {
+wxString Registro::feedBack(int giorno) {
     list<Attivita> activitybyday;
     string lista;
     activitybyday = showActivitiesByDay(giorno);
     for (auto itr: activitybyday) {
         lista += itr.getDescrizione() + "\n";
     }
-    return lista;
+    wxString mystring(lista);
+    return mystring;
 }
 
 void Registro::notify() {

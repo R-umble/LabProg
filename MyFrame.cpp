@@ -19,6 +19,9 @@ MyFrame::MyFrame(Registro *model, Controller *controller, wxWindow *parent, wxWi
     wxBoxSizer *frameSizer;
     frameSizer = new wxBoxSizer(wxHORIZONTAL);
 
+    wxBoxSizer *frameSizerInput;
+    frameSizerInput = new wxBoxSizer(wxVERTICAL);
+
     staticText = new wxStaticText(this, wxID_ANY, wxT("lista attività"), wxDefaultPosition, wxDefaultSize, 0);
     staticText->Wrap(-1);
     frameSizer->Add(staticText, 0, wxALL, 5);
@@ -26,8 +29,8 @@ MyFrame::MyFrame(Registro *model, Controller *controller, wxWindow *parent, wxWi
     textCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
     frameSizer->Add(textCtrl, 0, wxALL, 5);
 
-    textCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-    frameSizer->Add(textCtrl, 0, wxALL, 5);
+    textCtrlInput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+    frameSizerInput->Add(textCtrlInput, 0, wxALL, 5);
 
     wxBoxSizer *buttonSizer;
     buttonSizer = new wxBoxSizer(wxVERTICAL);
@@ -75,7 +78,10 @@ void MyFrame::onDecrementButtonClick(wxCommandEvent &event) {
 }
 
 void MyFrame::update() {
-    string value = registro->feedBack();
-    wxString wxIntString = wxString::Format(wxT("%i"), value);
-    textCtrl->ChangeValue(wxIntString);
+    int giorno;
+    giorno = wxAtoi(textCtrlInput->GetValue());
+    wxString value = registro->feedBack(giorno);
+    //wxString wxIntString = wxString::Format(wxT("%i"), value);
+    //textCtrl->ChangeValue(wxIntString);
+    textCtrl->ChangeValue(value);
 }

@@ -22,6 +22,7 @@ private:
 
     wxStaticText* staticText;
     wxTextCtrl* textCtrl;
+    wxTextCtrl* textCtrlInput;
     wxButton* incrementButton;
     wxButton* decrementButton;
 
