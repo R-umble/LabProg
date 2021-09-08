@@ -20,8 +20,9 @@ private:
     Registro* registro;
     Controller* controller;
 
-    wxStaticText* staticText;
-    wxTextCtrl* textCtrl;
+    wxStaticText* staticTextListaAtt;
+    wxStaticText* StaticTextGiornoAtt;
+    wxTextCtrl* textCtrlOutput;
     wxTextCtrl* textCtrlInput;
     wxButton* incrementButton;
     wxButton* decrementButton;

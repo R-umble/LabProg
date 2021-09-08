@@ -9,49 +9,61 @@ enum {
     ID_Hello = 1
 };
 
-MyFrame::MyFrame(Registro *model, Controller *controller, wxWindow *parent, wxWindowID id, const wxString &title,const wxPoint &pos, const wxSize &size, long style): wxFrame(parent, id, title, pos, size, style){
+MyFrame::MyFrame(Registro *model, Controller *controller, wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style) : wxFrame(parent, id, title, pos, size, style) {
     this->registro = model;
     this->registro->addObserver(this);
     this->controller = controller;
 
     this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 
-    wxBoxSizer *frameSizer;
-    frameSizer = new wxBoxSizer(wxHORIZONTAL);
+    //BoxSizer Output
+    wxSizer *frameSizerOutput;
+    frameSizerOutput = new wxBoxSizer(wxHORIZONTAL);
 
-    wxBoxSizer *frameSizerInput;
-    frameSizerInput = new wxBoxSizer(wxVERTICAL);
+    staticTextListaAtt = new wxStaticText(this, wxID_ANY, wxT("lista attività"), wxDefaultPosition, wxDefaultSize, 0);
+    staticTextListaAtt->Wrap(-1);
+    frameSizerOutput->Add(staticTextListaAtt, 0, wxLEFT | wxRIGHT, 17);
 
-    staticText = new wxStaticText(this, wxID_ANY, wxT("lista attività"), wxDefaultPosition, wxDefaultSize, 0);
-    staticText->Wrap(-1);
-    frameSizer->Add(staticText, 0, wxALL, 5);
+    textCtrlOutput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+    frameSizerOutput->Add(textCtrlOutput, 0, wxLEFT | wxRIGHT, 10);
 
-    textCtrl = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-    frameSizer->Add(textCtrl, 0, wxALL, 5);
+    //BoxSizer Input
+    wxSizer *frameSizerInput;
+    frameSizerInput = new wxBoxSizer(wxHORIZONTAL);
+
+    StaticTextGiornoAtt = new wxStaticText(this, wxID_ANY, wxT("giorno attività"), wxDefaultPosition, wxDefaultSize, 0);
+    StaticTextGiornoAtt->Wrap(-1);
+    frameSizerInput->Add(StaticTextGiornoAtt, 0, wxLEFT | wxRIGHT, 10);
 
     textCtrlInput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-    frameSizerInput->Add(textCtrlInput, 0, wxALL, 5);
+    frameSizerInput->Add(textCtrlInput, 0, wxLEFT | wxRIGHT, 10);
 
-    wxBoxSizer *buttonSizer;
+    //BoxSizer Bottone
+    wxSizer *buttonSizer;
     buttonSizer = new wxBoxSizer(wxVERTICAL);
 
-    incrementButton = new wxButton(this, wxID_ANY, wxT("Increment"), wxDefaultPosition, wxDefaultSize, 0);
-    buttonSizer->Add(incrementButton, 0, wxALL, 5);
+    incrementButton = new wxButton(this, wxID_ANY, wxT("cerca"), wxDefaultPosition, wxDefaultSize, 0);
+    buttonSizer->Add(incrementButton, 0, wxALIGN_CENTER | wxUP | wxRIGHT, 10);
 
-    decrementButton = new wxButton(this, wxID_ANY, wxT("Decrement"), wxDefaultPosition, wxDefaultSize, 0);
-    buttonSizer->Add(decrementButton, 0, wxALL, 5);
+    //Nidificazione Boxsizer
+    wxSizer *inputOutputSizer;
+    inputOutputSizer = new wxBoxSizer(wxVERTICAL);
+    inputOutputSizer->Add(frameSizerInput, 1, wxUP, 10);
+    inputOutputSizer->Add(frameSizerOutput, 1, wxUP, 10);
 
-    frameSizer->Add(buttonSizer, 1, wxEXPAND, 5);
+    wxBoxSizer *allSizer;
+    allSizer = new wxBoxSizer(wxHORIZONTAL);
+    allSizer->Add(inputOutputSizer, 1, wxALL, 5);
+    allSizer->Add(buttonSizer, 1, wxALL, 5);
 
-    this->SetSizer(frameSizer);
+
+    this->SetSizer(allSizer);
     this->Layout();
 
     this->Centre(wxBOTH);
 
     // Connect Events
     incrementButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onIncrementButtonClick), NULL,
-                             this);
-    decrementButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onDecrementButtonClick), NULL,
                              this);
 
     update();
@@ -62,9 +74,7 @@ MyFrame::~MyFrame() noexcept {
     incrementButton->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onIncrementButtonClick),
                                 NULL,
                                 this);
-    decrementButton->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onDecrementButtonClick),
-                                NULL,
-                                this);
+
     // unsubscribe from registro
     registro->removeObserver(this);
 }
@@ -82,6 +92,6 @@ void MyFrame::update() {
     giorno = wxAtoi(textCtrlInput->GetValue());
     wxString value = registro->feedBack(giorno);
     //wxString wxIntString = wxString::Format(wxT("%i"), value);
-    //textCtrl->ChangeValue(wxIntString);
-    textCtrl->ChangeValue(value);
+    //textCtrlOutput->ChangeValue(wxIntString);
+    textCtrlOutput->ChangeValue(value);
 }
