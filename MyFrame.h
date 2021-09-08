@@ -21,7 +21,7 @@ private:
     Controller* controller;
 
     wxStaticText* staticTextListaAtt;
-    wxStaticText* StaticTextGiornoAtt;
+    wxStaticText* staticTextGiornoAtt;
     wxTextCtrl* textCtrlOutput;
     wxTextCtrl* textCtrlInput;
     wxButton* incrementButton;

@@ -31,9 +31,9 @@ MyFrame::MyFrame(Registro *model, Controller *controller, wxWindow *parent, wxWi
     wxSizer *frameSizerInput;
     frameSizerInput = new wxBoxSizer(wxHORIZONTAL);
 
-    StaticTextGiornoAtt = new wxStaticText(this, wxID_ANY, wxT("giorno attività"), wxDefaultPosition, wxDefaultSize, 0);
-    StaticTextGiornoAtt->Wrap(-1);
-    frameSizerInput->Add(StaticTextGiornoAtt, 0, wxLEFT | wxRIGHT, 10);
+    staticTextGiornoAtt = new wxStaticText(this, wxID_ANY, wxT("giorno attività"), wxDefaultPosition, wxDefaultSize, 0);
+    staticTextGiornoAtt->Wrap(-1);
+    frameSizerInput->Add(staticTextGiornoAtt, 0, wxLEFT | wxRIGHT, 10);
 
     textCtrlInput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
     frameSizerInput->Add(textCtrlInput, 0, wxLEFT | wxRIGHT, 10);
