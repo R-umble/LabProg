@@ -10,12 +10,10 @@ bool MyApp::OnInit()
     Attivita palestra("palestra",17, 19, 20);
     Attivita giostra("bruuum",12, 13, 19);
 
-    Registro registroAttivita("Pietro");
-    registroAttivita.addAttivita(studio);
-    registroAttivita.addAttivita(palestra);
-    registroAttivita.addAttivita(giostra);
-
     Registro* registro = new Registro;
+    registro->addAttivita(studio);
+    registro->addAttivita(palestra);
+    registro->addAttivita(giostra);
     Controller* controller = new Controller(registro);
     MyFrame *frame = new MyFrame(registro, controller, NULL, wxID_ANY, "Laboratorio Programmazione" );
     frame->Show( true );

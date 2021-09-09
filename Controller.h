@@ -11,7 +11,7 @@
 class Controller {
 public:
     Controller(Registro* m) : registro(m) {}
-    void increment();
+    void show();
 private:
     Registro* registro;
 };

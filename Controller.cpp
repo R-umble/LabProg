@@ -4,8 +4,6 @@
 
 #include "Controller.h"
 
-void Controller::increment() {
-    int value = registro->getData();
-    value++;
-    registro->setData(value);
+void Controller::show() {
+    registro->setData();
 }

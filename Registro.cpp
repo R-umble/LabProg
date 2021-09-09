@@ -11,17 +11,19 @@ using namespace std;
 
 list<Attivita> Registro::showActivitiesByDay(int giorno) {
     list<Attivita> activitybyday;
-    for (auto itr: activities)
+    for (auto itr: activities) {
         if (itr.getGiorno() == giorno)
             activitybyday.push_back(itr);
-
+    }
     return activitybyday;
 }
 
 wxString Registro::feedBack(int giorno) {
     list<Attivita> activitybyday;
     string lista;
+
     activitybyday = showActivitiesByDay(giorno);
+
     for (auto itr: activitybyday) {
         lista += itr.getDescrizione() + "\n";
     }
@@ -34,8 +36,7 @@ void Registro::notify() {
         observer->update();
 }
 
-void Registro::setData(const int i) {
-    data = i;
+void Registro::setData() {
     notify();
 }
 

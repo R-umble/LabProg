@@ -27,7 +27,6 @@ private:
     wxButton* showButton;
 
     virtual void onShowButtonClick(wxCommandEvent& event );
-    virtual void onDecrementButtonClick( wxCommandEvent& event );
 };
 
 

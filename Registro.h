@@ -20,7 +20,7 @@ public:
     int getData() const {
         return data;
     }
-    void setData(const int i);
+    void setData();
 
     void addAttivita(const Attivita &a){
         activities.push_back(a);
@@ -39,7 +39,7 @@ public:
     virtual void notify() override;
 
 private:
-    std::list<Observer*> observers;
+    list<Observer*> observers;
     list<Attivita> activities;
     string ownerName;
     int data = 0;

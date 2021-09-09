@@ -66,7 +66,6 @@ MyFrame::MyFrame(Registro *model, Controller *controller, wxWindow *parent, wxWi
     showButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onShowButtonClick), NULL,
                         this);
 
-    update();
 }
 
 MyFrame::~MyFrame() noexcept {
@@ -80,9 +79,8 @@ MyFrame::~MyFrame() noexcept {
 }
 
 void MyFrame::onShowButtonClick(wxCommandEvent &event) {
-    controller->increment();
+    controller->show();
 }
-
 
 void MyFrame::update() {
     int giorno;
