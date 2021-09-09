@@ -25,7 +25,7 @@ MyFrame::MyFrame(Registro *model, Controller *controller, wxWindow *parent, wxWi
     frameSizerOutput->Add(staticTextListaAtt, 0, wxLEFT | wxRIGHT, 17);
 
     textCtrlOutput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-    frameSizerOutput->Add(textCtrlOutput, 0, wxLEFT | wxRIGHT, 10);
+    frameSizerOutput->Add(textCtrlOutput, 0,  wxLEFT | wxRIGHT, 10);
 
     //BoxSizer Input
     wxSizer *frameSizerInput;
