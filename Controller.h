@@ -10,11 +10,10 @@
 
 class Controller {
 public:
-    Controller(Registro* m) : model(m) {}
+    Controller(Registro* m) : registro(m) {}
     void increment();
-    void decrement();
 private:
-    Registro* model;
+    Registro* registro;
 };
 
 

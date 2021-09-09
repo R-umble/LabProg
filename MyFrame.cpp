@@ -42,8 +42,8 @@ MyFrame::MyFrame(Registro *model, Controller *controller, wxWindow *parent, wxWi
     wxSizer *buttonSizer;
     buttonSizer = new wxBoxSizer(wxVERTICAL);
 
-    incrementButton = new wxButton(this, wxID_ANY, wxT("cerca"), wxDefaultPosition, wxDefaultSize, 0);
-    buttonSizer->Add(incrementButton, 0, wxALIGN_CENTER | wxUP | wxRIGHT, 10);
+    showButton = new wxButton(this, wxID_ANY, wxT("cerca"), wxDefaultPosition, wxDefaultSize, 0);
+    buttonSizer->Add(showButton, 0, wxALIGN_CENTER | wxUP | wxRIGHT, 10);
 
     //Nidificazione Boxsizer
     wxSizer *inputOutputSizer;
@@ -63,29 +63,26 @@ MyFrame::MyFrame(Registro *model, Controller *controller, wxWindow *parent, wxWi
     this->Centre(wxBOTH);
 
     // Connect Events
-    incrementButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onIncrementButtonClick), NULL,
-                             this);
+    showButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onShowButtonClick), NULL,
+                        this);
 
     update();
 }
 
 MyFrame::~MyFrame() noexcept {
     // Disconnect Events
-    incrementButton->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onIncrementButtonClick),
-                                NULL,
-                                this);
+    showButton->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onShowButtonClick),
+                           NULL,
+                           this);
 
     // unsubscribe from registro
     registro->removeObserver(this);
 }
 
-void MyFrame::onIncrementButtonClick(wxCommandEvent &event) {
+void MyFrame::onShowButtonClick(wxCommandEvent &event) {
     controller->increment();
 }
 
-void MyFrame::onDecrementButtonClick(wxCommandEvent &event) {
-    controller->decrement();
-}
 
 void MyFrame::update() {
     int giorno;

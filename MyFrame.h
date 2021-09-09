@@ -24,10 +24,9 @@ private:
     wxStaticText* staticTextGiornoAtt;
     wxTextCtrl* textCtrlOutput;
     wxTextCtrl* textCtrlInput;
-    wxButton* incrementButton;
-    wxButton* decrementButton;
+    wxButton* showButton;
 
-    virtual void onIncrementButtonClick( wxCommandEvent& event );
+    virtual void onShowButtonClick(wxCommandEvent& event );
     virtual void onDecrementButtonClick( wxCommandEvent& event );
 };
 
