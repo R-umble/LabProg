@@ -6,14 +6,14 @@
 
 bool MyApp::OnInit()
 {
-    Attivita studio("Studio",13, 14, 20);
-    Attivita palestra("palestra",17, 19, 20);
-    Attivita giostra("bruuum",12, 13, 19);
+    Attivita studio("Sessione di analisi",13, 14, 25);
+    Attivita cena("cena con amici",20, 22, 25);
+    Attivita lunapark("giostre di sesto",21, 23, 14);
 
     Registro* registro = new Registro;
     registro->addAttivita(studio);
-    registro->addAttivita(palestra);
-    registro->addAttivita(giostra);
+    registro->addAttivita(cena);
+    registro->addAttivita(lunapark);
     Controller* controller = new Controller(registro);
     MyFrame *frame = new MyFrame(registro, controller, NULL, wxID_ANY, "Laboratorio Programmazione" );
     frame->Show( true );

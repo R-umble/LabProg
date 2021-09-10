@@ -5,5 +5,5 @@
 #include "Controller.h"
 
 void Controller::show() {
-    registro->setData();
+    registro->showData();
 }

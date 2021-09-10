@@ -86,7 +86,5 @@ void MyFrame::update() {
     int giorno;
     giorno = wxAtoi(textCtrlInput->GetValue());
     wxString value = registro->feedBack(giorno);
-    //wxString wxIntString = wxString::Format(wxT("%i"), value);
-    //textCtrlOutput->ChangeValue(wxIntString);
     textCtrlOutput->ChangeValue(value);
 }

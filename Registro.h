@@ -12,35 +12,49 @@
 
 using namespace std;
 
-class Registro : public Subject{
+class Registro : public Subject {
 public:
-    Registro(const string &name = ""): ownerName(name){}
+    Registro(const string &name = "") : ownerName(name) {}
+
     virtual ~Registro() = default;
 
     int getData() const {
         return data;
     }
-    void setData();
 
-    void addAttivita(const Attivita &a){
+    void showData();
+
+    void addAttivita(const Attivita &a) {
         activities.push_back(a);
     }
-    void removeAttivita(const Attivita &a){
+
+    void removeAttivita(const Attivita &a) {
         activities.remove(a);
     }
-    list<Attivita> showActivitiesByDay(int giorno);
 
-    //Metodo di aiuto per output su schermo
+    string getOwner() {
+        return ownerName;
+    }
+
+    void setOwner(const string &a) {
+        ownerName = a;
+    }
+
+    //metodo creazione lista da mandare a schermo
+    list <Attivita> createListByDay(int giorno);
+
     wxString feedBack(int giorno);
 
     //gesione observer
-    virtual void addObserver(Observer* o) override;
-    virtual void removeObserver(Observer* o) override;
+    virtual void addObserver(Observer *o) override;
+
+    virtual void removeObserver(Observer *o) override;
+
     virtual void notify() override;
 
 private:
-    list<Observer*> observers;
-    list<Attivita> activities;
+    list<Observer *> observers;
+    list <Attivita> activities;
     string ownerName;
     int data = 0;
 };

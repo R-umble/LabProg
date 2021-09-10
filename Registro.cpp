@@ -9,7 +9,7 @@
 
 using namespace std;
 
-list<Attivita> Registro::showActivitiesByDay(int giorno) {
+list<Attivita> Registro::createListByDay(int giorno) {
     list<Attivita> activitybyday;
     for (auto itr: activities) {
         if (itr.getGiorno() == giorno)
@@ -22,7 +22,7 @@ wxString Registro::feedBack(int giorno) {
     list<Attivita> activitybyday;
     string lista;
 
-    activitybyday = showActivitiesByDay(giorno);
+    activitybyday = createListByDay(giorno);
 
     for (auto itr: activitybyday) {
         lista += itr.getDescrizione() + "\n";
@@ -36,7 +36,7 @@ void Registro::notify() {
         observer->update();
 }
 
-void Registro::setData() {
+void Registro::showData() {
     notify();
 }
 
