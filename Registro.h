@@ -31,9 +31,19 @@ public:
         return data;
     }
 
+    //get and set risposta
+    void setRisposta(int num){
+        risposta = num;
+    }
+
+    int getRisposta (){
+        return risposta;
+    }
+
 private:
     list<Observer *> observers;
     int data;
+    int risposta;
 };
 
 #endif //LABPROG_REGISTRO_H

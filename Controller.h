@@ -11,7 +11,15 @@
 class Controller {
 public:
     Controller(Registro* m) : registro(m) {}
-    void show();
+
+    int calcMax(int *arr);
+
+    int calcMin(int *arr);
+
+    int calcMean(int *arr);
+
+    int calcSum(int *arr);
+
 private:
     Registro* registro;
 };

@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Attivita.h"
 #include "Registro.h"
 #include "MyApp.h"
 #include "MyFrame.h"

@@ -69,8 +69,10 @@ public:
     MyFrame(Registro* pRegister, Controller* controller,wxWindow *parent = nullptr, wxWindowID id = wxID_ANY, const wxString &title = wxEmptyString, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxSize(838, 342), long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL);
 
     virtual ~MyFrame();
+
     virtual void update() override;
 
+    int* getvalue(int arr[]);
 };
 
 #endif //LABPROG_MYFRAME_H

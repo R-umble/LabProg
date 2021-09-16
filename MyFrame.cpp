@@ -103,21 +103,56 @@ MyFrame::MyFrame(Registro *pRegister, Controller *controller, wxWindow *parent, 
 }
 
 MyFrame::~MyFrame() {
+    m_buttonMax->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(MyFrame::onClickMaxButton), nullptr);
+    m_buttonMin->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(MyFrame::onClickMinButton), nullptr);
+    m_buttonMean->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(MyFrame::onClickMeanButton), nullptr);
+    m_buttonSum->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(MyFrame::onClickSumButton), nullptr);
     aRegister->removeObserver(this);
 }
 
 void MyFrame::onClickMaxButton(wxCommandEvent &event){
-
+    int n = 9;
+    int arr[n];
+    int *a = getvalue(arr);
+    controller->calcMax(a);
 }
 
 void MyFrame::onClickMinButton(wxCommandEvent &event) {
-
+    int n = 9;
+    int arr[n];
+    int *a = getvalue(arr);
+    controller->calcMin(a);
 }
 
 void MyFrame::onClickMeanButton(wxCommandEvent &event) {
-
+    int n = 9;
+    int arr[n];
+    int *a = getvalue(arr);
+    controller->calcMean(a);
 }
 
 void MyFrame::onClickSumButton(wxCommandEvent &event) {
+    int n = 9;
+    int arr[n];
+    int *a = getvalue(arr);
+    controller->calcSum(a);
+}
 
+void MyFrame::update() {
+    int value = 0;
+    wxString stringnumber = wxString::Format(wxT("%d"), (int)value);
+    m_textCtrlRis->ChangeValue(stringnumber);
+}
+
+int *MyFrame::getvalue(int arr[]) {
+    arr[0] = m_spinCtrl1->GetValue();
+    arr[1] = m_spinCtrl2->GetValue();
+    arr[2] = m_spinCtrl3->GetValue();
+    arr[3] = m_spinCtrl4->GetValue();
+    arr[4] = m_spinCtrl5->GetValue();
+    arr[5] = m_spinCtrl6->GetValue();
+    arr[6] = m_spinCtrl7->GetValue();
+    arr[7] = m_spinCtrl8->GetValue();
+    arr[8] = m_spinCtrl9->GetValue();
+    return arr;
 }
