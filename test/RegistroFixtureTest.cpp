@@ -28,3 +28,6 @@ TEST_F(RegisterSuite, TestOwner) {
 TEST_F(RegisterSuite, TestAddActivities) {
     ASSERT_EQ(wxString("powerlifting\n"),R.feedBack(5));
 }
+
+//test registro
+//test data

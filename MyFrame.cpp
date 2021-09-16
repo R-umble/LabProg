@@ -1,90 +1,123 @@
 //
 // Created by francesco on 04/09/21.
 //
+///////////////////////////////////////////////////////////////////////////
+// C++ code generated with wxFormBuilder (version 3.9.0 Aug 21 2021)
+// http://www.wxformbuilder.org/
+//
+// PLEASE DO *NOT* EDIT THIS FILE!
+///////////////////////////////////////////////////////////////////////////
 
 #include "MyFrame.h"
-#include <wx/spinctrl.h>
 
-enum {
-    ID_Hello = 1
-};
+///////////////////////////////////////////////////////////////////////////
 
-MyFrame::MyFrame(Registro *model, Controller *controller, wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style) : wxFrame(parent, id, title, pos, size, style) {
-    this->registro = model;
-    this->registro->addObserver(this);
+MyFrame::MyFrame(Registro *pRegister, Controller *controller, wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style) : wxFrame(parent, id, title, pos, size, style) {
+    this->aRegister = pRegister;
+    this->aRegister->addObserver(this);
     this->controller = controller;
 
     this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 
-    //BoxSizer Output
-    wxSizer *frameSizerOutput;
-    frameSizerOutput = new wxBoxSizer(wxHORIZONTAL);
+    wxBoxSizer *bSizerAll;
+    bSizerAll = new wxBoxSizer(wxHORIZONTAL);
 
-    staticTextListaAtt = new wxStaticText(this, wxID_ANY, wxT("lista attività"), wxDefaultPosition, wxDefaultSize, 0);
-    staticTextListaAtt->Wrap(-1);
-    frameSizerOutput->Add(staticTextListaAtt, 0, wxLEFT | wxRIGHT, 17);
+    wxBoxSizer *bSizerLeft;
+    bSizerLeft = new wxBoxSizer(wxVERTICAL);
 
-    textCtrlOutput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-    frameSizerOutput->Add(textCtrlOutput, 0,  wxLEFT | wxRIGHT, 10);
+    m_staticText1 = new wxStaticText(this, wxID_ANY, wxT("Tabella di calcolo"), wxDefaultPosition, wxDefaultSize, 0);
+    m_staticText1->Wrap(-1);
+    bSizerLeft->Add(m_staticText1, 0, wxALL, 5);
 
-    //BoxSizer Input
-    wxSizer *frameSizerInput;
-    frameSizerInput = new wxBoxSizer(wxHORIZONTAL);
+    wxGridSizer *gSizerTabella;
+    gSizerTabella = new wxGridSizer(3, 3, 0, 0);
 
-    staticTextGiornoAtt = new wxStaticText(this, wxID_ANY, wxT("giorno attività"), wxDefaultPosition, wxDefaultSize, 0);
-    staticTextGiornoAtt->Wrap(-1);
-    frameSizerInput->Add(staticTextGiornoAtt, 0, wxLEFT | wxRIGHT, 10);
+    m_spinCtrl1 = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0);
+    gSizerTabella->Add(m_spinCtrl1, 1, wxALL | wxEXPAND, 5);
 
-    textCtrlInput = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
-    frameSizerInput->Add(textCtrlInput, 0, wxLEFT | wxRIGHT, 10);
+    m_spinCtrl2 = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0);
+    gSizerTabella->Add(m_spinCtrl2, 1, wxALL | wxEXPAND, 5);
 
-    //BoxSizer Bottone
-    wxSizer *buttonSizer;
-    buttonSizer = new wxBoxSizer(wxVERTICAL);
+    m_spinCtrl3 = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0);
+    gSizerTabella->Add(m_spinCtrl3, 1, wxALL | wxEXPAND, 5);
 
-    showButton = new wxButton(this, wxID_ANY, wxT("cerca"), wxDefaultPosition, wxDefaultSize, 0);
-    buttonSizer->Add(showButton, 0, wxALIGN_CENTER | wxUP | wxRIGHT, 10);
+    m_spinCtrl4 = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0);
+    gSizerTabella->Add(m_spinCtrl4, 1, wxALL | wxEXPAND, 5);
 
-    //Nidificazione Boxsizer
-    wxSizer *inputOutputSizer;
-    inputOutputSizer = new wxBoxSizer(wxVERTICAL);
-    inputOutputSizer->Add(frameSizerInput, 1, wxUP, 10);
-    inputOutputSizer->Add(frameSizerOutput, 1, wxUP, 10);
+    m_spinCtrl5 = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0);
+    gSizerTabella->Add(m_spinCtrl5, 1, wxALL | wxEXPAND, 5);
 
-    wxBoxSizer *allSizer;
-    allSizer = new wxBoxSizer(wxHORIZONTAL);
-    allSizer->Add(inputOutputSizer, 1, wxALL, 5);
-    allSizer->Add(buttonSizer, 1, wxALL, 5);
+    m_spinCtrl6 = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0);
+    gSizerTabella->Add(m_spinCtrl6, 1, wxALL | wxEXPAND, 5);
+
+    m_spinCtrl7 = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0);
+    gSizerTabella->Add(m_spinCtrl7, 1, wxALL | wxEXPAND, 5);
+
+    m_spinCtrl8 = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0);
+    gSizerTabella->Add(m_spinCtrl8, 1, wxALL | wxEXPAND, 5);
+
+    m_spinCtrl9 = new wxSpinCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0);
+    gSizerTabella->Add(m_spinCtrl9, 1, wxALL | wxEXPAND, 5);
 
 
-    this->SetSizer(allSizer);
+    bSizerLeft->Add(gSizerTabella, 1, wxEXPAND, 5);
+
+
+    bSizerAll->Add(bSizerLeft, 1, wxEXPAND, 5);
+
+    wxBoxSizer *bSizerRight;
+    bSizerRight = new wxBoxSizer(wxVERTICAL);
+
+    m_staticText2 = new wxStaticText(this, wxID_ANY, wxT("Risultato"), wxDefaultPosition, wxDefaultSize, 0);
+    m_staticText2->Wrap(-1);
+    bSizerRight->Add(m_staticText2, 0, wxALL | wxEXPAND, 5);
+
+    m_textCtrlRis = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+    bSizerRight->Add(m_textCtrlRis, 0, wxALL | wxEXPAND, 5);
+
+    m_buttonMax = new wxButton(this, wxID_ANY, wxT("Max"), wxDefaultPosition, wxDefaultSize, 0);
+    bSizerRight->Add(m_buttonMax, 1, wxALL | wxEXPAND, 5);
+
+    m_buttonMin = new wxButton(this, wxID_ANY, wxT("Min"), wxDefaultPosition, wxDefaultSize, 0);
+    bSizerRight->Add(m_buttonMin, 1, wxALL | wxEXPAND, 5);
+
+    m_buttonMean = new wxButton(this, wxID_ANY, wxT("Mean"), wxDefaultPosition, wxDefaultSize, 0);
+    bSizerRight->Add(m_buttonMean, 1, wxALL | wxEXPAND, 5);
+
+    m_buttonSum = new wxButton(this, wxID_ANY, wxT("Sum"), wxDefaultPosition, wxDefaultSize, 0);
+    bSizerRight->Add(m_buttonSum, 1, wxALL | wxEXPAND, 5);
+
+
+    bSizerAll->Add(bSizerRight, 1, wxALIGN_CENTER_VERTICAL | wxEXPAND, 1);
+
+
+    this->SetSizer(bSizerAll);
     this->Layout();
 
     this->Centre(wxBOTH);
 
-    // Connect Events
-    showButton->Connect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onShowButtonClick), NULL,
-                        this);
+    m_buttonMax->Connect(wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(MyFrame::onClickMaxButton), nullptr);
+    m_buttonMin->Connect(wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(MyFrame::onClickMinButton), nullptr);
+    m_buttonMean->Connect(wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(MyFrame::onClickMeanButton), nullptr);
+    m_buttonSum->Connect(wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(MyFrame::onClickSumButton), nullptr);
+}
+
+MyFrame::~MyFrame() {
+    aRegister->removeObserver(this);
+}
+
+void MyFrame::onClickMaxButton(wxCommandEvent &event){
 
 }
 
-MyFrame::~MyFrame() noexcept {
-    // Disconnect Events
-    showButton->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler(MyFrame::onShowButtonClick),
-                           NULL,
-                           this);
+void MyFrame::onClickMinButton(wxCommandEvent &event) {
 
-    // unsubscribe from registro
-    registro->removeObserver(this);
 }
 
-void MyFrame::onShowButtonClick(wxCommandEvent &event) {
-    controller->show();
+void MyFrame::onClickMeanButton(wxCommandEvent &event) {
+
 }
 
-void MyFrame::update() {
-    int giorno;
-    giorno = wxAtoi(textCtrlInput->GetValue());
-    wxString value = registro->feedBack(giorno);
-    textCtrlOutput->ChangeValue(value);
+void MyFrame::onClickSumButton(wxCommandEvent &event) {
+
 }
