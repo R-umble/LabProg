@@ -30,6 +30,7 @@
 #include <wx/icon.h>
 #include <wx/frame.h>
 #include "Controller.h"
+#include "array"
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -72,7 +73,7 @@ public:
 
     virtual void update() override;
 
-    int* getvalue(int arr[]);
+    array<int, 9> & getvalue(array<int, 9> &arr);
 };
 
 #endif //LABPROG_MYFRAME_H

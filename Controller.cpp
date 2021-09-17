@@ -4,10 +4,10 @@
 
 #include "Controller.h"
 
-void Controller::calcMax(int *arr) {
+void Controller::calcMax(array<int, 9> &arr) {
     int a = 0;
     for (int n = 0; n < 9; n++) {
-        if(a>arr[n])
+        if(a<arr[n])
             a=arr[n];
     }
     registro->setData(a);
@@ -16,7 +16,7 @@ void Controller::calcMax(int *arr) {
 void Controller::calcMin(int *arr) {
     int a = 0;
     for (int n = 0; n < 9; n++) {
-        if(a<arr[n])
+        if(a>arr[n])
             a=arr[n];
     }
     registro->setData(a);

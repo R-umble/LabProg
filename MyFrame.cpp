@@ -111,31 +111,27 @@ MyFrame::~MyFrame() {
 }
 
 void MyFrame::onClickMaxButton(wxCommandEvent &event){
-    int n = 9;
-    int arr[n];
-    int *a = getvalue(arr);
-    controller->calcMax(a);
+    array< int, 9 > arr;
+    getvalue(arr);
+    controller->calcMax(arr);
 }
 
 void MyFrame::onClickMinButton(wxCommandEvent &event) {
-    int n = 9;
-    int arr[n];
-    int *a = getvalue(arr);
-    controller->calcMin(a);
+    array< int, 9 > arr;
+    getvalue(arr);
+    controller->calcMax(arr);
 }
 
 void MyFrame::onClickMeanButton(wxCommandEvent &event) {
-    int n = 9;
-    int arr[n];
-    int *a = getvalue(arr);
-    controller->calcMean(a);
+    array< int, 9 > arr;
+    getvalue(arr);
+    controller->calcMax(arr);
 }
 
 void MyFrame::onClickSumButton(wxCommandEvent &event) {
-    int n = 9;
-    int arr[n];
-    int *a = getvalue(arr);
-    controller->calcSum(a);
+    array< int, 9 > arr;
+    getvalue(arr);
+    controller->calcMax(arr);
 }
 
 void MyFrame::update() {
@@ -145,7 +141,7 @@ void MyFrame::update() {
     m_textCtrlRis->ChangeValue(stringnumber);
 }
 
-int *MyFrame::getvalue(int arr[9]) {
+array<int, 9> & MyFrame::getvalue(array<int, 9> &arr) {
     arr[0] = m_spinCtrl1->GetValue();
     arr[1] = m_spinCtrl2->GetValue();
     arr[2] = m_spinCtrl3->GetValue();

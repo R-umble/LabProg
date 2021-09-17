@@ -5,6 +5,7 @@
 #ifndef LABPROG_CONTROLLER_H
 #define LABPROG_CONTROLLER_H
 
+#include <array>
 #include "Registro.h"
 
 
@@ -12,7 +13,7 @@ class Controller {
 public:
     Controller(Registro* m) : registro(m) {}
 
-    void calcMax(int *arr);
+    void calcMax(array<int, 9> &arr);
 
     void calcMin(int *arr);
 
