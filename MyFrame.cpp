@@ -12,9 +12,9 @@
 
 ///////////////////////////////////////////////////////////////////////////
 
-MyFrame::MyFrame(Registro *pRegister, Controller *controller, wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style) : wxFrame(parent, id, title, pos, size, style) {
-    this->aRegister = pRegister;
-    this->aRegister->addObserver(this);
+MyFrame::MyFrame(Registro *aregistro, Controller *controller, wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size, long style) : wxFrame(parent, id, title, pos, size, style) {
+    this->registro = aregistro;
+    this->registro->addObserver(this);
     this->controller = controller;
 
     this->SetSizeHints(wxDefaultSize, wxDefaultSize);
@@ -107,7 +107,7 @@ MyFrame::~MyFrame() {
     m_buttonMin->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(MyFrame::onClickMinButton), nullptr);
     m_buttonMean->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(MyFrame::onClickMeanButton), nullptr);
     m_buttonSum->Disconnect(wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(MyFrame::onClickSumButton), nullptr);
-    aRegister->removeObserver(this);
+    registro->removeObserver(this);
 }
 
 void MyFrame::onClickMaxButton(wxCommandEvent &event){
@@ -140,11 +140,12 @@ void MyFrame::onClickSumButton(wxCommandEvent &event) {
 
 void MyFrame::update() {
     int value = 0;
+    value = registro->getData();
     wxString stringnumber = wxString::Format(wxT("%d"), (int)value);
     m_textCtrlRis->ChangeValue(stringnumber);
 }
 
-int *MyFrame::getvalue(int arr[]) {
+int *MyFrame::getvalue(int arr[9]) {
     arr[0] = m_spinCtrl1->GetValue();
     arr[1] = m_spinCtrl2->GetValue();
     arr[2] = m_spinCtrl3->GetValue();

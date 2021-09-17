@@ -20,3 +20,12 @@ void Registro::addObserver(Observer* o) {
 void Registro::removeObserver(Observer* o) {
     observers.remove(o);
 }
+
+void Registro::setData(int num) {
+        data = num;
+        notify();
+}
+
+int Registro::getData() const {
+    return data;
+}

@@ -16,34 +16,17 @@ public:
     virtual ~Registro() = default;
 
     //gesione observer
-    virtual void addObserver(Observer *o) override;
-
-    virtual void removeObserver(Observer *o) override;
-
-    virtual void notify() override;
+    void addObserver(Observer *o) override;
+    void removeObserver(Observer *o) override;
+    void notify() override;
 
     //get and set data
-    void setData(int num){
-        data = num;
-    }
-
-    int getData (){
-        return data;
-    }
-
-    //get and set risposta
-    void setRisposta(int num){
-        risposta = num;
-    }
-
-    int getRisposta (){
-        return risposta;
-    }
+    void setData(int num);
+    int getData () const;
 
 private:
     list<Observer *> observers;
     int data;
-    int risposta;
 };
 
 #endif //LABPROG_REGISTRO_H

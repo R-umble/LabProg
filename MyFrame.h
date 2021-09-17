@@ -39,7 +39,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 class MyFrame : public wxFrame, public Observer {
 private:
-    Registro* aRegister;
+    Registro* registro;
     Controller* controller;
     void onClickMaxButton(wxCommandEvent &event);
     void onClickMinButton(wxCommandEvent &event);
@@ -66,7 +66,7 @@ protected:
 
 public:
 
-    MyFrame(Registro* pRegister, Controller* controller,wxWindow *parent = nullptr, wxWindowID id = wxID_ANY, const wxString &title = wxEmptyString, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxSize(838, 342), long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL);
+    MyFrame(Registro* aregistro, Controller* controller, wxWindow *parent = nullptr, wxWindowID id = wxID_ANY, const wxString &title = wxEmptyString, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxSize(838, 342), long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL);
 
     virtual ~MyFrame();
 

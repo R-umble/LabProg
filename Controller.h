@@ -12,13 +12,13 @@ class Controller {
 public:
     Controller(Registro* m) : registro(m) {}
 
-    int calcMax(int *arr);
+    void calcMax(int *arr);
 
-    int calcMin(int *arr);
+    void calcMin(int *arr);
 
-    int calcMean(int *arr);
+    void calcMean(int *arr);
 
-    int calcSum(int *arr);
+    void calcSum(int *arr);
 
 private:
     Registro* registro;
