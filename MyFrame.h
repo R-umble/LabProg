@@ -29,6 +29,7 @@
 #include <wx/image.h>
 #include <wx/icon.h>
 #include <wx/frame.h>
+#include <vector>
 #include "Controller.h"
 #include "array"
 
@@ -67,13 +68,13 @@ protected:
 
 public:
 
-    MyFrame(Registro* aregistro, Controller* controller, wxWindow *parent = nullptr, wxWindowID id = wxID_ANY, const wxString &title = wxEmptyString, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxSize(838, 342), long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL);
+    MyFrame(Registro* aregistro, Controller* acontroller, wxWindow *parent = nullptr, wxWindowID id = wxID_ANY, const wxString &title = wxEmptyString, const wxPoint &pos = wxDefaultPosition, const wxSize &size = wxSize(838, 342), long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL);
 
     virtual ~MyFrame();
 
     virtual void update() override;
 
-    array<int, 9> & getvalue(array<int, 9> &arr);
+    vector<int> getvalue(vector<int> vect);
 };
 
 #endif //LABPROG_MYFRAME_H

@@ -10,7 +10,7 @@ bool MyApp::OnInit()
     auto* registro = new Registro;
     auto* controller = new Controller(registro);
 
-    MyFrame *frame = new MyFrame(registro,controller);
+    auto *frame = new MyFrame(registro,controller,NULL, wxID_ANY, "laboratorio programmazione");
     frame->Show( true );
     return true;
 }

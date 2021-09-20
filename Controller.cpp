@@ -2,39 +2,40 @@
 // Created by francesco on 05/09/21.
 //
 
+#include <vector>
 #include "Controller.h"
 
-void Controller::calcMax(array<int, 9> &arr) {
+void Controller::calcMax(vector<int> vect) {
     int a = 0;
-    for (int n = 0; n < 9; n++) {
-        if(a<arr[n])
-            a=arr[n];
+    for (auto itr: vect) {
+        if (a < itr)
+            a = itr;
     }
     registro->setData(a);
 }
 
-void Controller::calcMin(int *arr) {
+void Controller::calcMin(vector<int> vect) {
     int a = 0;
-    for (int n = 0; n < 9; n++) {
-        if(a>arr[n])
-            a=arr[n];
+    for (auto itr: vect) {
+        if (a > itr)
+            a = itr;
     }
     registro->setData(a);
 }
 
-void Controller::calcMean(int *arr) {
+void Controller::calcMean(vector<int> vect) {
     int a = 0;
-    for (int n = 0; n < 9; n++) {
-        a+=arr[n];
+    for (auto itr: vect) {
+        a += itr;
     }
-    a=a/9;
+    a = a / 9;
     registro->setData(a);
 }
 
-void Controller::calcSum(int *arr) {
+void Controller::calcSum(vector<int> vect) {
     int a = 0;
-    for (int n = 0; n < 9; n++) {
-        a+=arr[n];
+    for (auto itr: vect) {
+        a += itr;
     }
     registro->setData(a);
 }

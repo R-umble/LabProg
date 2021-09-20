@@ -13,20 +13,18 @@ using namespace std;
 
 class Registro : public Subject {
 public:
-    virtual ~Registro() = default;
-
     //gesione observer
     void addObserver(Observer *o) override;
     void removeObserver(Observer *o) override;
     void notify() override;
 
     //get and set data
-    void setData(int num);
+    void setData(const int num);
     int getData () const;
 
 private:
+    int data = 0;
     list<Observer *> observers;
-    int data;
 };
 
 #endif //LABPROG_REGISTRO_H
