@@ -6,7 +6,7 @@
 #include "Controller.h"
 
 void Controller::calcMax(vector<int> vect) {
-    int a = 0;
+    int a = *vect.begin();
     for (auto itr: vect) {
         if (a < itr)
             a = itr;
@@ -15,7 +15,7 @@ void Controller::calcMax(vector<int> vect) {
 }
 
 void Controller::calcMin(vector<int> vect) {
-    int a = 0;
+    int a = *vect.begin();
     for (auto itr: vect) {
         if (a > itr)
             a = itr;

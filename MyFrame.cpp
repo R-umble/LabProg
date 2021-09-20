@@ -119,19 +119,19 @@ void MyFrame::onClickMaxButton(wxCommandEvent &event) {
 
 void MyFrame::onClickMinButton(wxCommandEvent &event) {
     vector<int> vect;
-    getvalue(vect);
+    vect = getvalue(vect);
     controller->calcMin(vect);
 }
 
 void MyFrame::onClickMeanButton(wxCommandEvent &event) {
     vector<int> vect;
-    getvalue(vect);
+    vect = getvalue(vect);
     controller->calcMean(vect);
 }
 
 void MyFrame::onClickSumButton(wxCommandEvent &event) {
     vector<int> vect;
-    getvalue(vect);
+    vect = getvalue(vect);
     controller->calcSum(vect);
 }
 
