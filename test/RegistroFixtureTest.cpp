@@ -4,30 +4,19 @@
 
 #include "gtest/gtest.h"
 #include "../Registro.h"
-#include "../Attivita.h"
-#include <wx/string.h>
 
 class RegisterSuite : public ::testing::Test {
 
 protected:
 
-    virtual void setUp() {
-        Attivita a( "powerlifting",12, 13, 5);
-        Attivita b("Gara",21, 23, 11);
-        R.setOwner("Francesco");
-        R.addAttivita(a);
-        R.addAttivita(b);
+    virtual void SetUp() {
+        R.setData(5);
     }
     Registro R;
 };
 
-TEST_F(RegisterSuite, TestOwner) {
-    ASSERT_EQ("Francesco", R.getOwner());
+TEST_F(RegisterSuite, TestData) {
+    ASSERT_EQ(5, R.getData());
+    R.setData(3);
+    ASSERT_EQ(3,R.getData());
 }
-
-TEST_F(RegisterSuite, TestAddActivities) {
-    ASSERT_EQ(wxString("powerlifting\n"),R.feedBack(5));
-}
-
-//test registro
-//test data
